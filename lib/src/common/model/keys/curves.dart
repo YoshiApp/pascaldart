@@ -1,8 +1,12 @@
 import 'package:quiver/core.dart';
 
 /// Available curves in PascalCoin
+/// Edited by Yosh, add 415: 'secp256r1'
+///
 const Map<int, String> CURVES = {
   0: 'empty',
+  414: 'prime256v1',
+  415: 'secp256r1',
   714: 'secp256k1',
   715: 'secp384r1',
   729: 'sect283k1',
@@ -20,6 +24,8 @@ class XYPubKey {
 }
 
 final Map<int, XYPubKey> XYL_PUBKEYS = {
+  414: XYPubKey(32, 32),
+  415: XYPubKey(32, 32),
   714: XYPubKey(32, 32),
   715: XYPubKey(48, 48),
   716: XYPubKey(66, 66),
@@ -27,18 +33,22 @@ final Map<int, XYPubKey> XYL_PUBKEYS = {
   0: XYPubKey(0, 0),
 };
 
-const Map<int, int> L_PRIVKEYS = {714: 32, 715: 48, 716: 66, 729: 36};
+const Map<int, int> L_PRIVKEYS = {414:32, 415:32, 714: 32, 715: 48, 716: 66, 729: 36};
 
 const ID = Symbol('id');
 const NAME = Symbol('name');
 
 /// Simple elliptic curve representation of keys in pascalcoin.
 class Curve {
+  static const String CN_PRIME256V1 = 'prime256v1'; // prime256v1 curve
+  static const String CN_SECP256R1 = 'secp256r1'; // secp256r1 curve
   static const String CN_SECP256K1 = 'secp256k1'; // secp256k1 curve
   static const String CN_SECP384R1 = 'secp384r1'; // secp384r1 curve
   static const String CN_SECT283K1 = 'sect283k1'; // sect283k1 curve
   static const String CN_SECP521R1 = 'secp521r1'; // secp521r1 curve
 
+  static const int CI_PRIME256V1 = 414; // prime256v1 curve ID
+  static const int CI_SECP256R1 = 415; // secp256r1 curve ID
   static const int CI_SECP256K1 = 714; // secp256k1 curve ID
   static const int CI_SECP384R1 = 715; // secp384r1 curve ID
   static const int CI_SECT283K1 = 729; // sect283k1 curve ID
